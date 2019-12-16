@@ -1,13 +1,13 @@
 ## MollifierNd
 
-
+Classes for polynomial mollifiers with compact support, as well as classes for mollified Green's functions for Laplaces equation obtained by inverting the Laplacian with mollifier forcing. 
 
 
 ### Prerequisites
 
 ### Versioning
 
-Release : 17.12.11
+Release : 19.12.16
 
 ### Authors
 
