@@ -30,7 +30,6 @@
 #include <cmath>
 #include <vector>
 #include <functional>
-using namespace std;
 
 #ifndef _HighOrderPolyMollifier1d_
 #define _HighOrderPolyMollifier1d_

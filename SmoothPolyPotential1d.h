@@ -32,8 +32,6 @@
 
 #include <cmath>
 #include <vector>
-using namespace std;
-
 #include "SmoothPolyMollifier1d.h"
 
 class SmoothPolyPotential1d
@@ -192,7 +190,7 @@ class SmoothPolyPotential1d
     // derivativeList[1] =   x derivative
     // derivativeList[2] =  xx derivative
 
-	void derivatives(double x, vector <double>& derivativeList, int maxOrder = 2) const
+	void derivatives(double x, std::vector <double>& derivativeList, int maxOrder = 2) const
    	{
    	switch (maxOrder)
    	{
@@ -254,7 +252,7 @@ class SmoothPolyPotential1d
    	}
 
 
-	void evaluateDerivatives1D(double r2, double x, vector <double>& derivativeList) const
+	void evaluateDerivatives1D(double r2, double x, std::vector <double>& derivativeList) const
     {
     	int size = derivativeList.size();
     	derivativeList[0] =  evaluation1D_2ndOrder(r2);
@@ -308,9 +306,9 @@ class SmoothPolyPotential1d
 /* Maple commmands to determine the normalized potential evaluation and derivatives of the normalized potential
 
 restart;  p:=10; g := r -> (969969/524288)*(1-r*r)^p;int(g(r),r=-1..1);
-> readlib(C);plot(int(g(r)*(1/2)*abs(s-r),r = -1..1),s=-4..4);
-> assume(s <= 1);additionally(s >= 0);C(subs(s^2=r2,convert(int(g(r)*(1/2)*abs(s-r),r = -1..1),horner)));
-> C(subs(s*s=r2,convert(diff(int(g(r)*(1/2)*abs(s-r),r = -1..1),s),horner)));
+> readlib(C);plot(int(g(r)*(1/2)*std::abs(s-r),r = -1..1),s=-4..4);
+> assume(s <= 1);additionally(s >= 0);C(subs(s^2=r2,convert(int(g(r)*(1/2)*std::abs(s-r),r = -1..1),horner)));
+> C(subs(s*s=r2,convert(diff(int(g(r)*(1/2)*std::abs(s-r),r = -1..1),s),horner)));
 
 */
 

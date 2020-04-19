@@ -26,7 +26,6 @@
 */
 #include <cmath>
 #include <vector>
-using namespace std;
 
 #include "SmoothPolyMollifier2d.h"
 
@@ -106,7 +105,7 @@ class SmoothPolyPotential2d
     this->laplaceCoeff      = laplaceCoeff;
 
     this->exponent  = _DEFAULT_SOURCE_DIFFERENTIABLITY_ + 1;
-    this->logRadius = log(radius);
+    this->logRadius = std::log(radius);
 
     source.initialize(xPos,yPos,radius,strength);
     source.setDifferentiability(this->exponent-1);
@@ -140,7 +139,7 @@ class SmoothPolyPotential2d
 	{
 	double r2 = (x-xPos)*(x-xPos)  + (y-yPos)*(y-yPos);
 	double r2radius = r2/(radius*radius);
-	if(r2radius >= 1.0) {return (strength/laplaceCoeff)*.15915494309190*log(sqrt(r2));}   // strength*(1/(2*pi))*log(r)
+	if(r2radius >= 1.0) {return (strength/laplaceCoeff)*.15915494309190*std::log(std::sqrt(r2));}   // strength*(1/(2*pi))*std::log(r)
     return (strength/laplaceCoeff)*.15915494309190*(evaluation2D_2ndOrder(r2radius) + logRadius);
 	}
 	//  Returns a std::function that is bound to the evaluation operator of *this
@@ -208,7 +207,7 @@ class SmoothPolyPotential2d
     // derivativeList[5] =  yy derivative
     //
 
-	void derivatives(double x, double y, vector <double>& derivativeList, int maxOrder = 2) const
+	void derivatives(double x, double y, std::vector <double>& derivativeList, int maxOrder = 2) const
    	{
    	switch (maxOrder)
    	{
@@ -232,10 +231,10 @@ class SmoothPolyPotential2d
     }
     else
     {
-    	r = sqrt(r2);
+    	r = std::sqrt(r2);
     	if(dCount >= 1)
     	{
-    		derivativeList[0] =  (strength/laplaceCoeff)*.15915494309190*log(r);
+    		derivativeList[0] =  (strength/laplaceCoeff)*.15915494309190*std::log(r);
     	}
     	if(dCount >= 3)
     	{
@@ -283,7 +282,7 @@ class SmoothPolyPotential2d
    	{
     double r2 = (x-xPos)*(x-xPos)  + (y-yPos)*(y-yPos);
 	double r2radius = r2/(radius*radius);
-	double r = sqrt(r2);
+	double r = std::sqrt(r2);
 
 	if(r2radius > 1.0)
 	{
@@ -358,7 +357,7 @@ class SmoothPolyPotential2d
     //
     // 0 <=  differentiability order <= 9
 
-    void evaluateDerivatives2D(double r2, double x, double y, vector <double>& derivativeList) const
+    void evaluateDerivatives2D(double r2, double x, double y, std::vector <double>& derivativeList) const
     {
     	int size = derivativeList.size();
     	if(size == 1)  {derivativeList[0] = evaluation2D_2ndOrder(r2); return;}

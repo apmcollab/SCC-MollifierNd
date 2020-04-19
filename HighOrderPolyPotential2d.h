@@ -27,7 +27,7 @@
 */
 #include <cmath>
 #include <vector>
-using namespace std;
+
 
 #ifndef _HighOrderPolyPotential2d_
 #define _HighOrderPolyPotential2d_
@@ -85,7 +85,7 @@ class HighOrderPolyPotential2d
 
     this->exponent  = _DEFAULT_SOURCE_DIFFERENTIABLITY_ + 1;
     this->order     = _DEFAULT_ORDER_;
-    this->logRadius = log(radius);
+    this->logRadius = std::log(radius);
 	}
 
 	void setRadius(double radius) {this->radius = radius;}
@@ -140,7 +140,7 @@ class HighOrderPolyPotential2d
 	{
 	double r2 = (x-xPos)*(x-xPos)  + (y-yPos)*(y-yPos);
 	double r2radius = r2/(radius*radius);
-	if(r2radius >= 1.0) {return (strength/laplaceCoeff)*.15915494309190*log(sqrt(r2));}
+	if(r2radius >= 1.0) {return (strength/laplaceCoeff)*.15915494309190*std::log(std::sqrt(r2));}
     switch(order)
     {
     case 2 : return ((strength/laplaceCoeff)*.15915494309190)*(evaluation2D_2ndOrder(r2radius) + logRadius); break;
@@ -167,7 +167,7 @@ class HighOrderPolyPotential2d
 
     // 0 <=  differentiability order <= 9
 
-   	void derivatives(double x, double y, vector <double>& derivativeList, int maxOrder = 1) const
+   	void derivatives(double x, double y, std::vector <double>& derivativeList, int maxOrder = 1) const
    	{
    	switch (maxOrder)
    	{
@@ -190,10 +190,10 @@ class HighOrderPolyPotential2d
     }
     else
     {
-    	r = sqrt(r2);
+    	r = std::sqrt(r2);
     	if(dCount >= 1)
     	{
-    		derivativeList[0] =  (strength/laplaceCoeff)*.15915494309190*log(r);
+    		derivativeList[0] =  (strength/laplaceCoeff)*.15915494309190*std::log(r);
     	}
     	if(dCount >= 3)
     	{
@@ -363,7 +363,7 @@ private :
 
     // 0 <=  differentiability order <= 9
 
-    void evaluateDerivatives2D(double r2, double x, double y, vector <double>& derivativeList) const
+    void evaluateDerivatives2D(double r2, double x, double y, std::vector <double>& derivativeList) const
     {
     	int size = derivativeList.size();
         if(size < 1) return;

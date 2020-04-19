@@ -27,7 +27,6 @@
 #include <cmath>
 #include <vector>
 #include <functional>
-using namespace std;
 
 #ifndef _SmoothPolyMollifier2d_
 #define _SmoothPolyMollifier2d_
@@ -156,7 +155,7 @@ class SmoothPolyMollifier2d
     // derivativeList[4] =  xy derivative
     // derivativeList[5] =  yy derivative
 
-   	void derivatives(double x, double y, vector <double>& derivativeList,int maxOrder = 2) const
+   	void derivatives(double x, double y, std::vector <double>& derivativeList,int maxOrder = 2) const
    	{
    	switch (maxOrder)
    	{
@@ -238,7 +237,7 @@ class SmoothPolyMollifier2d
 	// du/dx(r)     = sigma*M*(1-r^2)^(M-1)*(-2 r) (x/r) = -2.0*sigma*M*(1-r^2)^(M-1)*x
 	// d^2u/dx^2(r) = 4.0*sigma*M*(M-1)*(1-r^2)^(M-2)*x*x - 2.0*sigma*M*(1-r^2)^(M-1)
     //
-    void evaluateDerivatives2D(double r2, double x, double y, vector <double>& derivativeList) const
+    void evaluateDerivatives2D(double r2, double x, double y, std::vector <double>& derivativeList) const
     {
     	int size = derivativeList.size();
 

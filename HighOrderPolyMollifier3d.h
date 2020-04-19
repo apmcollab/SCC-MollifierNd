@@ -29,7 +29,7 @@
 #include <cmath>
 #include <vector>
 #include <functional>
-using namespace std;
+
 
 #ifndef _HighOrderPolyMollifier3d_
 #define _HighOrderPolyMollifier3d_

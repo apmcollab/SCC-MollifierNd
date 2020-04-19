@@ -27,7 +27,6 @@
 #include <cmath>
 #include <vector>
 #include <functional>
-using namespace std;
 
 
 #ifndef _SmoothPolyMollifier1d_
@@ -174,7 +173,7 @@ class SmoothPolyMollifier1d
     // derivativeList[2] =  xx  derivative
     // derivativeList[3] = xxx derivative
 
-   	void derivatives(double x, vector <double>& derivativeList, int maxOrder = 2) const
+   	void derivatives(double x, std::vector <double>& derivativeList, int maxOrder = 2) const
    	{
    	switch (maxOrder)
    	{

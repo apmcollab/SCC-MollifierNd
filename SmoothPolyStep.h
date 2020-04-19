@@ -25,9 +25,7 @@
 #############################################################################
 */
 #include <cmath>
-#include <vector>
 #include <functional>
-using namespace std;
 
 //
 // Class SmoothPolyStep

@@ -26,7 +26,7 @@
 */
 #include <cmath>
 #include <vector>
-using namespace std;
+#include <functional>
 
 #ifndef _HighOrderPolyPotential3d_
 #define _HighOrderPolyPotential3d_
@@ -137,7 +137,7 @@ class HighOrderPolyPotential3d
 	{
 	double r2 = (x-xPos)*(x-xPos)  + (y-yPos)*(y-yPos) + (z-zPos)*(z-zPos);
 	double r2radius = r2/(radius*radius);
-	if(r2radius >= 1.0)  {return -(strength/laplaceCoeff)*0.79577471545948e-01*(1.0/(sqrt(r2)));} // strength*(-1.0/(4*pi*r))
+	if(r2radius >= 1.0)  {return -(strength/laplaceCoeff)*0.79577471545948e-01*(1.0/(std::sqrt(r2)));} // strength*(-1.0/(4*pi*r))
     switch(order)
     {
     case 2 : return ((evaluation3D_2ndOrder(r2radius) - 1.0)*.79577471545947667883e-01*(strength/laplaceCoeff))/radius;
@@ -188,7 +188,7 @@ class HighOrderPolyPotential3d
     // derivativeList[3] =   z derivative
 
 
-	void derivatives(double x, double y, double z, vector <double>& derivativeList, int maxOrder = 1) const
+	void derivatives(double x, double y, double z, std::vector <double>& derivativeList, int maxOrder = 1) const
    	{
    	switch (maxOrder)
    	{
@@ -213,7 +213,7 @@ class HighOrderPolyPotential3d
     }
     else
     {
-    	r = sqrt(r2);
+    	r = std::sqrt(r2);
     	if(dCount >= 1)
     	{
     		derivativeList[0] =  -(strength/laplaceCoeff)*.79577471545947667883e-01*(1.0/r);
@@ -383,7 +383,7 @@ class HighOrderPolyPotential3d
     //
     // 0 <=  differentiability order <= 9
 
-    void evaluateDerivatives3D(double r2, double x, double y, double z, vector <double>& derivativeList) const
+    void evaluateDerivatives3D(double r2, double x, double y, double z, std::vector <double>& derivativeList) const
     {
     	int size = derivativeList.size();
     	if(size == 1)

@@ -27,7 +27,6 @@
 #include <cmath>
 #include <vector>
 #include <functional>
-using namespace std;
 
 #ifndef _SmoothPolyMollifier3d_
 #define _SmoothPolyMollifier3d_
@@ -167,7 +166,7 @@ class SmoothPolyMollifier3d
     // derivativeList[8] =  yz derivative
     // derivativeList[9] =  zz derivative
 
-   	void derivatives(double x, double y, double z, vector <double>& derivativeList, int maxOrder = 2) const
+   	void derivatives(double x, double y, double z, std::vector <double>& derivativeList, int maxOrder = 2) const
    	{
 
    	switch (maxOrder)
@@ -249,7 +248,7 @@ private:
 	// du/dx(r)     = sigma*M*(1-r^2)^(M-1)*(-2 r) (x/r) = -2.0*sigma*M*(1-r^2)^(M-1)*x
 	// d^2u/dx^2(r) = 4.0*sigma*M*(M-1)*(1-r^2)^(M-2)*x*x - 2.0*sigma*M*(1-r^2)^(M-1)
 
-    void evaluateDerivatives3D(double r2, double x, double y, double z, vector <double>& derivativeList) const
+    void evaluateDerivatives3D(double r2, double x, double y, double z, std::vector <double>& derivativeList) const
     {
     	int size = derivativeList.size();
     	if(size == 1)  {derivativeList[0] = 1.2566370614359172954e+01*evaluation3D(r2); return;}

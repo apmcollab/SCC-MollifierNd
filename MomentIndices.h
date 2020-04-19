@@ -1,5 +1,4 @@
 #include <vector>
-using namespace std;
 
 #ifndef _MomentIndices_
 #define _MomentIndices_
@@ -15,7 +14,7 @@ using namespace std;
 	MomentIndices momentIndices;
 
     int dimension = 3;
-    vector<vector < int > > indices;
+    std::vector<std::vector < int > > indices;
 
     momentIndices.getMomentIndices(order,dimension,indices);
 
@@ -55,9 +54,9 @@ class MomentIndices
 
 	public:
 
-	void getMomentIndices(int order, int dimension, vector<vector <int> >& indices)
+	void getMomentIndices(int order, int dimension, std::vector<std::vector <int> >& indices)
     {
-    vector<int> indexValues(dimension,0);
+    std::vector<int> indexValues(dimension,0);
     int coordinate = 0;
 
 	getMomentIndex(order, coordinate, indexValues,indices);
@@ -66,22 +65,22 @@ class MomentIndices
 //
 // Recursive method to find all indices of moments up to a given order.
 // The dimension of the coordinate system is determined by the
-// size of the indexValue vector.
+// size of the indexValue std::vector.
 //
 //  Initial inputs :
 //
 //  order      = order of the moments
 //  coordinate = 0
-//  indexValues = vector of int's of length equal to the dimension of the coordinate system
+//  indexValues = std::vector of int's of length equal to the dimension of the coordinate system
 //
 //
 // Output :
 
-// indices : an array of indices = an vector of vectors containing the indices associated
+// indices : an array of indices = an std::vector of vectors containing the indices associated
 //           with the specified order
 
-void getMomentIndex(int order, int coordinate, vector<int> indexValues,
-vector<vector <int> >& indices)
+void getMomentIndex(int order, int coordinate, std::vector<int> indexValues,
+std::vector<std::vector <int> >& indices)
 {
     if(order == 0)
     {

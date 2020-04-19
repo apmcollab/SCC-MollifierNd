@@ -26,7 +26,6 @@
 */
 #include <cmath>
 #include <vector>
-using namespace std;
 
 #include "SmoothPolyMollifier3d.h"
 
@@ -149,7 +148,7 @@ class SmoothPolyPotential3d
 	{
 	double r2 = (x-xPos)*(x-xPos)  + (y-yPos)*(y-yPos) + (z-zPos)*(z-zPos);
 	double r2radius = r2/(radius*radius);
-	if(r2radius >= 1.0)  {return -(strength/laplaceCoeff)*0.79577471545948e-01*(1.0/(sqrt(r2)));} // strength*(-1.0/(4*pi*r)
+	if(r2radius >= 1.0)  {return -(strength/laplaceCoeff)*0.79577471545948e-01*(1.0/(std::sqrt(r2)));} // strength*(-1.0/(4*pi*r)
     return ((evaluation3D_2ndOrder(r2radius) - 1.0)*.79577471545947667883e-01*(strength/laplaceCoeff))/radius;
 	}
 
@@ -211,7 +210,7 @@ class SmoothPolyPotential3d
     // derivativeList[9] =  zz derivative
     //
 
-   	void derivatives(double x, double y, double z, vector <double>& derivativeList, int maxOrder = 2) const
+   	void derivatives(double x, double y, double z, std::vector <double>& derivativeList, int maxOrder = 2) const
    	{
 
    	switch (maxOrder)
@@ -239,7 +238,7 @@ class SmoothPolyPotential3d
     }
     else
     {
-    	r = sqrt(r2);
+    	r = std::sqrt(r2);
     	if(dCount >= 1)
     	{
     		derivativeList[0] =  -(strength/laplaceCoeff)*.79577471545947667883e-01*(1.0/r);
@@ -296,7 +295,7 @@ class SmoothPolyPotential3d
    	{
     double r2 = (x-xPos)*(x-xPos)  + (y-yPos)*(y-yPos) + (z-zPos)*(z-zPos) ;
 	double r2radius = r2/(radius*radius);
-	double r = sqrt(r2);
+	double r = std::sqrt(r2);
 
 	if(r2radius > 1.0)
 	{
@@ -371,7 +370,7 @@ class SmoothPolyPotential3d
     //
     // 0 <=  differentiability order <= 9
 
-    void evaluateDerivatives3D(double r2, double x, double y, double z, vector <double>& derivativeList) const
+    void evaluateDerivatives3D(double r2, double x, double y, double z, std::vector <double>& derivativeList) const
     {
     	int size = derivativeList.size();
     	if(size == 1)  {derivativeList[0] = evaluation3D_2ndOrder(r2); return;}
