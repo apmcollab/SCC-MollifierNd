@@ -244,11 +244,11 @@ class SmoothPolyMollifier2d
     	if(size == 1)
     	{derivativeList[0] = evaluation2D(r2)*6.28318530717958648; return;}
 
-    	double sigma = 2*(exponent+1);
+    	double sigma = 2.0*(exponent+1);
 		double u     = 1.0-r2;
 
-    	double uMM1; // (1-r^2)^(exponent-1)
-    	double uMM2; // (1-r^2)^(exponent-2)
+    	double uMM1 = 1.0; // (1-r^2)^(exponent-1)
+    	double uMM2 = 1.0; // (1-r^2)^(exponent-2)
     	double M = exponent;
 
 

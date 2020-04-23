@@ -266,8 +266,8 @@ private:
 
 		double u     = 1.0-r2;
 
-    	double uMM1; // (1-r^2)^(exponent-1)
-    	double uMM2; // (1-r^2)^(exponent-2)
+    	double uMM1  = 1.0; // (1-r^2)^(exponent-1)
+    	double uMM2  = 1.0; // (1-r^2)^(exponent-2)
     	double M = exponent;
 
 
