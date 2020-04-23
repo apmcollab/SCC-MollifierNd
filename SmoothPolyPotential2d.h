@@ -26,6 +26,7 @@
 */
 #include <cmath>
 #include <vector>
+#include <functional>
 
 #include "SmoothPolyMollifier2d.h"
 
@@ -144,13 +145,13 @@ class SmoothPolyPotential2d
 	}
 	//  Returns a std::function that is bound to the evaluation operator of *this
 
-#if __cplusplus > 199711L
+
 	std::function<double(double,double)> getEvaluationPtr() const
 	{
     std::function<double(double,double)> F = [this](double x,double y) {return this->operator()(x,y);};
 	return std::move(F);
 	}
-#endif
+
 
 
 	double evaluateSource(double x,double y) const
@@ -160,13 +161,13 @@ class SmoothPolyPotential2d
 
 	//  Returns a std::function that is bound to the evaluation operator of *this
 
-#if __cplusplus > 199711L
+
 	std::function<double(double,double)> getSourceEvaluationPtr() const
 	{
     std::function<double(double,double)> F = [this](double x, double y) {return this->evaluateSource(x,y);};
 	return std::move(F);
 	}
-#endif
+
 
 
 	void setLaplaceCoefficient(double laplaceCoeff)

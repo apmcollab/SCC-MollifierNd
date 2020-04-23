@@ -26,6 +26,7 @@
 */
 #include <cmath>
 #include <vector>
+#include <functional>
 
 #include "SmoothPolyMollifier3d.h"
 
@@ -154,13 +155,13 @@ class SmoothPolyPotential3d
 
 	//  Returns a std::function that is bound to the evaluation operator of *this
 
-#if __cplusplus > 199711L
+
 	std::function<double(double,double,double )> getEvaluationPtr() const
 	{
 	std::function<double(double,double,double)> F = [this](double x,double y, double z) {return this->operator()(x,y,z);};
 	return std::move(F);
 	}
-#endif
+
 
 
 	double evaluateSource(double x, double y, double z) const
@@ -169,13 +170,11 @@ class SmoothPolyPotential3d
 	}
 
 
-#if __cplusplus > 199711L
 	std::function<double(double,double,double )> getSourceEvaluationPtr() const
 	{
 	std::function<double(double,double,double)> F = [this](double x,double y, double z) {return this->evaluateSource(x,y,z);};
 	return std::move(F);
 	}
-#endif
 
 
     // returns 4*pi* value

@@ -234,13 +234,13 @@ class SmoothPolyStep
 
     //  Returns a std::function that is bound to the evaluation operator of *this
 
-#if __cplusplus > 199711L
+
 	std::function<double(double)> getEvaluationPtr()
 	{
 	std::function<double(double)> F = [this](double x) {return this->operator()(x);};
 	return std::move(F);
 	}
-#endif
+
 
     // Returns the smooth polynomial mollifier upon which this step function is based
 

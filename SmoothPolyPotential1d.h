@@ -32,6 +32,7 @@
 
 #include <cmath>
 #include <vector>
+#include <functional>
 #include "SmoothPolyMollifier1d.h"
 
 class SmoothPolyPotential1d
@@ -139,13 +140,13 @@ class SmoothPolyPotential1d
 
 	//  Returns a std::function that is bound to the evaluation operator of *this
 
-#if __cplusplus > 199711L
+
 	std::function<double(double)> getEvaluationPtr() const
 	{
     std::function<double(double)> F = [this](double x) {return this->operator()(x);};
 	return std::move(F);
 	}
-#endif
+
 
     double evaluateSource(double x) const
 	{
@@ -154,13 +155,13 @@ class SmoothPolyPotential1d
 
 	//  Returns a std::function that is bound to the evaluation operator of *this
 
-#if __cplusplus > 199711L
+
 	std::function<double(double)> getSourceEvaluationPtr() const
 	{
     std::function<double(double)> F = [this](double x) {return this->evaluateSource(x);};
 	return std::move(F);
 	}
-#endif
+
 
 
     // Returns the potential due to a unit source with unit radius.

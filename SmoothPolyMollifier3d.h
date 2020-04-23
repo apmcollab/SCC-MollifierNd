@@ -143,16 +143,11 @@ class SmoothPolyMollifier3d
 
 	 //  Returns a std::function that is bound to the evaluation operator of *this
 
-#if __cplusplus > 199711L
-
 	std::function<double(double,double,double)> getEvaluationPtr() const
 	{
 	std::function<double(double,double,double)> F = [this](double x,double y,double z) {return this->operator()(x,y,z);};
 	return std::move(F);
 	}
-
-#endif
-
 
     // Derivative ordering:
     // derivativeList[0] = 0th derivative

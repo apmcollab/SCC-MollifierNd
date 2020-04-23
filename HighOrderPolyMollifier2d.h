@@ -131,13 +131,13 @@ class HighOrderPolyMollifier2d
 
 //  Returns a std::function that is bound to the evaluation operator of *this
 
-#if __cplusplus > 199711L
+
 	std::function<double(double,double)> getEvaluationPtr() const
 	{
 	std::function<double(double,double)> F = [this](double x,double y) {return this->operator()(x,y);};
 	return std::move(F);
 	}
-#endif
+
 
 
     //

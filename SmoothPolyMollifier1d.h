@@ -28,7 +28,6 @@
 #include <vector>
 #include <functional>
 
-
 #ifndef _SmoothPolyMollifier1d_
 #define _SmoothPolyMollifier1d_
 
@@ -137,22 +136,22 @@ class SmoothPolyMollifier1d
 
     //  Returns a std::function that is bound to the evaluation operator of *this
 
-#if __cplusplus > 199711L
+
 	std::function<double(double)> getEvaluationPtr() const
 	{
 	std::function<double(double)> F = [this](double x) {return this->operator()(x);};
 	return std::move(F);
 	}
-#endif
+
 //  Returns a std::function that is bound to the derivative operator of *this
 
-#if __cplusplus > 199711L
+
 	std::function<double(double)> getDerivativeEvaluationPtr() const
 	{
 	std::function<double(double)> F = [this](double x) {return this->derivative(x);};
 	return std::move(F);
 	}
-#endif
+
 
    	double derivative(double x) const
    	{
