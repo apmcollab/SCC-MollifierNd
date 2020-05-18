@@ -140,7 +140,7 @@ class SmoothPolyMollifier1d
 	std::function<double(double)> getEvaluationPtr() const
 	{
 	std::function<double(double)> F = [this](double x) {return this->operator()(x);};
-	return std::move(F);
+	return F;
 	}
 
 //  Returns a std::function that is bound to the derivative operator of *this
@@ -149,7 +149,7 @@ class SmoothPolyMollifier1d
 	std::function<double(double)> getDerivativeEvaluationPtr() const
 	{
 	std::function<double(double)> F = [this](double x) {return this->derivative(x);};
-	return std::move(F);
+	return F;
 	}
 
 

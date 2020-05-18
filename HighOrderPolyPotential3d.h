@@ -153,7 +153,7 @@ class HighOrderPolyPotential3d
  	std::function<double(double,double,double )> getEvaluationPtr() const
 	{
 	std::function<double(double,double,double)> F = [this](double x,double y, double z) {return this->operator()(x,y,z);};
-	return std::move(F);
+	return F;
 	}
 
     double radialDerivative3D(double r) const

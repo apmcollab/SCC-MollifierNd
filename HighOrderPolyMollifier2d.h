@@ -135,7 +135,7 @@ class HighOrderPolyMollifier2d
 	std::function<double(double,double)> getEvaluationPtr() const
 	{
 	std::function<double(double,double)> F = [this](double x,double y) {return this->operator()(x,y);};
-	return std::move(F);
+	return F;
 	}
 
 
