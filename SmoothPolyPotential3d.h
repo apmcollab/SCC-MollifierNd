@@ -30,8 +30,8 @@
 
 #include "SmoothPolyMollifier3d.h"
 
-#ifndef _SmoothPolyPotential3d_
-#define _SmoothPolyPotential3d_
+#ifndef SMOOTH_POLY_POTENTIAL_3D_
+#define SMOOTH_POLY_POTENTIAL_3D_
 
 #define _DEFAULT_SOURCE_DIFFERENTIABLITY_ 6
 

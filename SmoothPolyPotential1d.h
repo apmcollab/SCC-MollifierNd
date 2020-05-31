@@ -25,8 +25,8 @@
 #
 #############################################################################
 */
-#ifndef _SmoothPolyPotential1d_
-#define _SmoothPolyPotential1d_
+#ifndef SMOOTH_POLY_POTENTIAL_1D_
+#define SMOOTH_POLY_POTENTIAL_1D_
 
 #define _DEFAULT_SOURCE_DIFFERENTIABLITY_ 6
 

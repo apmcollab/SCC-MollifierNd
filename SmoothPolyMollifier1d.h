@@ -28,10 +28,10 @@
 #include <vector>
 #include <functional>
 
-#ifndef _SmoothPolyMollifier1d_
-#define _SmoothPolyMollifier1d_
+#ifndef SMOOTH_POLY_MOLLIFIER_1D_
+#define SMOOTH_POLY_MOLLIFIER_1D_
 
-#define _DEFAULT_DIFFERENTIABLITY_ 6
+#define DEFAULT_DIFFERENTIABLITY 6
 
 class SmoothPolyMollifier1d
 {
@@ -57,7 +57,7 @@ class SmoothPolyMollifier1d
     radius     = 0.0;
     strength   = 0.0;
     xPos = 0.0;
-    exponent     = _DEFAULT_DIFFERENTIABLITY_ + 1 ;
+    exponent     = DEFAULT_DIFFERENTIABLITY + 1 ;
 	}
 
 	void initialize(const SmoothPolyMollifier1d& S)
@@ -70,7 +70,7 @@ class SmoothPolyMollifier1d
 
 	void initialize(double xPos, double radius, double strength)
 	{
-    this->exponent     = _DEFAULT_DIFFERENTIABLITY_ + 1;
+    this->exponent     = DEFAULT_DIFFERENTIABLITY + 1;
 
     this->strength  = strength;
     this->radius    = radius;
@@ -319,5 +319,5 @@ class SmoothPolyMollifier1d
 };
 
 
-#undef _DEFAULT_DIFFERENTIABLITY_
+#undef DEFAULT_DIFFERENTIABLITY
 #endif /* SMOOTHPOLYMOLLIFIER_H_ */

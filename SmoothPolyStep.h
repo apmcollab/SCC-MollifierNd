@@ -74,10 +74,10 @@
 //
 #include "SmoothPolyMollifier1d.h"
 
-#ifndef _SmoothPolyStep_
-#define _SmoothPolyStep_
+#ifndef SMOOTH_POLY_STEP_
+#define SMOOTH_POLY_STEP_
 
-#define _DEFAULT_DIFFERENTIABLITY_ 6
+#define DEFAULT_DIFFERENTIABLITY 6
 
 class SmoothPolyStep 
 {
@@ -105,7 +105,7 @@ class SmoothPolyStep
 	void initialize()
 	{
     deltaStar    = 0.0;
-    exponent     = _DEFAULT_DIFFERENTIABLITY_;
+    exponent     = DEFAULT_DIFFERENTIABLITY;
     strength     = 1.0;
     xPos         = 0.0;
     stepDownFlag = false;
@@ -123,7 +123,7 @@ class SmoothPolyStep
 
 	void initialize(double xPos,double delta, double strength, bool stepDownFlag = false)
 	{
-    this->exponent     = _DEFAULT_DIFFERENTIABLITY_;
+    this->exponent     = DEFAULT_DIFFERENTIABLITY;
     this->strength     = strength;
     this->deltaStar    = delta/2.0;
     this->xPos         = xPos;
@@ -265,6 +265,6 @@ class SmoothPolyStep
 };
 
 
-#undef _DEFAULT_DIFFERENTIABLITY_
+#undef DEFAULT_DIFFERENTIABLITY
 
 #endif /* SMOOTHPOLYMOLLIFIER_H_ */

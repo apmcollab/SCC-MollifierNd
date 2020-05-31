@@ -28,10 +28,10 @@
 #include <vector>
 #include <functional>
 
-#ifndef _HighOrderPolyPotential3d_
-#define _HighOrderPolyPotential3d_
+#ifndef HIGH_ORDER_POLY_POTENTIAL_3D_
+#define HIGH_ORDER_POLY_POTENTIAL_3D_
 
-#define _DEFAULT_ORDER_      4
+#define MOLLIFIER_DEFAULT_ORDER      4
 #define _DEFAULT_SOURCE_DIFFERENTIABLITY_ 6
 
 class HighOrderPolyPotential3d
@@ -71,7 +71,7 @@ class HighOrderPolyPotential3d
     laplaceCoeff      = 1.0;
     strength  = 0.0;
 
-    order     = _DEFAULT_ORDER_;
+    order     = MOLLIFIER_DEFAULT_ORDER;
     exponent  = _DEFAULT_SOURCE_DIFFERENTIABLITY_ + 1;
 	}
 
@@ -89,7 +89,7 @@ class HighOrderPolyPotential3d
     this->strength  = strength;
 
     this->exponent  = _DEFAULT_SOURCE_DIFFERENTIABLITY_ + 1;
-    this->order     = _DEFAULT_ORDER_;
+    this->order     = MOLLIFIER_DEFAULT_ORDER;
 	}
 
 	void setRadius(double radius) {this->radius = radius;}
@@ -100,7 +100,7 @@ class HighOrderPolyPotential3d
 	this->order = order;
 	if((this->order != 2)&&(this->order != 4)&&(this->order != 6))
 	{
-	this->order = _DEFAULT_ORDER_;
+	this->order = MOLLIFIER_DEFAULT_ORDER;
 	}
 	}
 
@@ -419,7 +419,7 @@ class HighOrderPolyPotential3d
     int        exponent;    // The exponent of the mollifer
 };
 
-#undef _DEFAULT_ORDER_
+#undef MOLLIFIER_DEFAULT_ORDER
 #undef _DEFAULT_SOURCE_DIFFERENTIABLITY_
 
 

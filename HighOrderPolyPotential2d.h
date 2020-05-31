@@ -30,10 +30,10 @@
 #include <functional>
 
 
-#ifndef _HighOrderPolyPotential2d_
-#define _HighOrderPolyPotential2d_
+#ifndef HIGH_ORDER_POLY_POTENTIAL_2D_
+#define HIGH_ORDER_POLY_POTENTIAL_2D_
 
-#define _DEFAULT_ORDER_      4
+#define MOLLIFIER_DEFAULT_ORDER      4
 #define _DEFAULT_SOURCE_DIFFERENTIABLITY_ 6
 
 class HighOrderPolyPotential2d
@@ -71,7 +71,7 @@ class HighOrderPolyPotential2d
     laplaceCoeff   = 1.0;
     strength       = 0.0;
 
-    order     = _DEFAULT_ORDER_;
+    order     = MOLLIFIER_DEFAULT_ORDER;
     exponent  = _DEFAULT_SOURCE_DIFFERENTIABLITY_ + 1;
     logRadius = 0.0;
 	}
@@ -85,7 +85,7 @@ class HighOrderPolyPotential2d
     this->strength  = strength;
 
     this->exponent  = _DEFAULT_SOURCE_DIFFERENTIABLITY_ + 1;
-    this->order     = _DEFAULT_ORDER_;
+    this->order     = MOLLIFIER_DEFAULT_ORDER;
     this->logRadius = std::log(radius);
 	}
 
@@ -97,7 +97,7 @@ class HighOrderPolyPotential2d
 	this->order = order;
 	if((this->order != 2)&&(this->order != 4)&&(this->order != 6))
 	{
-	this->order = _DEFAULT_ORDER_;
+	this->order = MOLLIFIER_DEFAULT_ORDER;
 	}
 	}
 
@@ -403,7 +403,7 @@ private :
     double    logRadius;
 };
 
-#undef _DEFAULT_ORDER_
+#undef MOLLIFIER_DEFAULT_ORDER
 #undef _DEFAULT_SOURCE_DIFFERENTIABLITY_
 
 

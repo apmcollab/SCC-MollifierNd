@@ -31,11 +31,11 @@
 #include <functional>
 
 
-#ifndef _HighOrderPolyMollifier3d_
-#define _HighOrderPolyMollifier3d_
+#ifndef HIGH_ORDER_POLY_MOLLIFIER_3D_
+#define HIGH_ORDER_POLY_MOLLIFIER_3D_
 
-#define _DEFAULT_ORDER_      4
-#define _DEFAULT_DIFFERENTIABLITY_ 6
+#define MOLLIFIER_DEFAULT_ORDER      4
+#define DEFAULT_DIFFERENTIABLITY 6
 
 class HighOrderPolyMollifier3d
 {
@@ -72,8 +72,8 @@ class HighOrderPolyMollifier3d
     radius     = 0.0;
     strength   =  0.0;
 
-    order     = _DEFAULT_ORDER_;
-    exponent  = _DEFAULT_DIFFERENTIABLITY_ + 1;
+    order     = MOLLIFIER_DEFAULT_ORDER;
+    exponent  = DEFAULT_DIFFERENTIABLITY + 1;
 	}
 
 	void initialize(double xPos, double yPos, double zPos, double radius, double strength)
@@ -85,8 +85,8 @@ class HighOrderPolyMollifier3d
     this->radius    = radius;
     this->strength  = strength;
 
-    this->exponent  = _DEFAULT_DIFFERENTIABLITY_ + 1;
-    this->order     = _DEFAULT_ORDER_;
+    this->exponent  = DEFAULT_DIFFERENTIABLITY + 1;
+    this->order     = MOLLIFIER_DEFAULT_ORDER;
 	}
 
 	void setRadius(double radius) {this->radius = radius;}
@@ -97,7 +97,7 @@ class HighOrderPolyMollifier3d
 	this->order = order;
 	if((this->order != 2)&&(this->order != 4)&&(this->order != 6))
 	{
-	this->order = _DEFAULT_ORDER_;
+	this->order = MOLLIFIER_DEFAULT_ORDER;
 	}
 	}
 
@@ -223,8 +223,8 @@ class HighOrderPolyMollifier3d
     int        exponent;    // The exponent of the mollifier (determines differentiability)
 };
 
-#undef _DEFAULT_ORDER_
-#undef _DEFAULT_DIFFERENTIABLITY_
+#undef MOLLIFIER_DEFAULT_ORDER
+#undef DEFAULT_DIFFERENTIABLITY
 
 
 #endif /* SMOOTHPOLYMOLLIFIER_H_ */

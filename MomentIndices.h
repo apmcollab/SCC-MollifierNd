@@ -1,7 +1,7 @@
 #include <vector>
 
-#ifndef _MomentIndices_
-#define _MomentIndices_
+#ifndef MOMENT_INDICES_
+#define MOMENT_INDICES_
 //
 // A class with a single utility function for determining all 
 // moment indices of a specified order. 
