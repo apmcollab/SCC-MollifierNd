@@ -180,7 +180,7 @@ class SmoothPolyMollifier3d
 
     double oneOver4pi = 7.9577471545947667884e-02;
 
-    int dCount = derivativeList.size();
+    int dCount = (int)derivativeList.size();
 
     if(r2radius >= 1.0)
     {
@@ -245,7 +245,7 @@ private:
 
     void evaluateDerivatives3D(double r2, double x, double y, double z, std::vector <double>& derivativeList) const
     {
-    	int size = derivativeList.size();
+    	int size = (int)derivativeList.size();
     	if(size == 1)  {derivativeList[0] = 1.2566370614359172954e+01*evaluation3D(r2); return;}
 
     	double sigma = 0.0;

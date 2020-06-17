@@ -172,7 +172,7 @@ class SmoothPolyMollifier2d
 
     double oneOver2pi = 0.159154943091895336;
 
-    int dCount = derivativeList.size();
+    int dCount = (int)derivativeList.size();
 
     if(r2radius >= 1.0)
     {
@@ -239,7 +239,7 @@ class SmoothPolyMollifier2d
     //
     void evaluateDerivatives2D(double r2, double x, double y, std::vector <double>& derivativeList) const
     {
-    	int size = derivativeList.size();
+    	int size = (int)derivativeList.size();
 
     	if(size == 1)
     	{derivativeList[0] = evaluation2D(r2)*6.28318530717958648; return;}

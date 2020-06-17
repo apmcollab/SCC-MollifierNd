@@ -188,7 +188,7 @@ class SmoothPolyMollifier1d
    	double xRadius  = (x-xPos)/radius;
     double r2radius = xRadius*xRadius;
 
-    int dCount = derivativeList.size();
+    int dCount = (int)derivativeList.size();
 
     if(r2radius >= 1.0)
     {

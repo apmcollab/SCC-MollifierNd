@@ -229,7 +229,7 @@ class SmoothPolyPotential3d
 	double r3;
 	double r5;
 
-    int dCount = derivativeList.size();
+    int dCount = (int)derivativeList.size();
 
     if(r2radius <= 1.0)
     {
@@ -371,7 +371,7 @@ class SmoothPolyPotential3d
 
     void evaluateDerivatives3D(double r2, double x, double y, double z, std::vector <double>& derivativeList) const
     {
-    	int size = derivativeList.size();
+    	int size = (int)derivativeList.size();
     	if(size == 1)  {derivativeList[0] = evaluation3D_2ndOrder(r2); return;}
 
         double  dVal;
