@@ -205,7 +205,7 @@ class SmoothPolyPotential1d
     double r2       = (x-xPos)*(x-xPos);
 	double r2radius = r2/(radius*radius);
 
-    int dCount = derivativeList.size();
+    int dCount = (int)derivativeList.size();
 
     if(r2radius > 1.0)
     {
@@ -255,7 +255,7 @@ class SmoothPolyPotential1d
 
 	void evaluateDerivatives1D(double r2, double x, std::vector <double>& derivativeList) const
     {
-    	int size = derivativeList.size();
+    	int size = (int)derivativeList.size();
     	derivativeList[0] =  evaluation1D_2ndOrder(r2);
 
     	double dVal = 0.0;

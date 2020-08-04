@@ -7,11 +7,11 @@ Classes for polynomial mollifiers with compact support, as well as classes for m
 
 ### Versioning
 
-Release : 1.0.5
+Release : 1.0.6
 
 ### Date
 
-June 17, 2020 
+August 4, 2020 
 
 ### Authors
 
