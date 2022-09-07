@@ -206,9 +206,10 @@ class SmoothPolyStep
 
 	// Normalized step function
 	//
-	// Returns the value of alpha*(1 - s^2)^p where
+	// Returns the value of the integral from -1 to s of alpha*(1 - s^2)^p where
 	// p is the exponent (= differentiability)
 	// and alpha is a normalization factor so that
+	// the value 0 is returned at s = 0.0 and
 	// the value 1 is returned at s = 1.0
 	//
 	//
