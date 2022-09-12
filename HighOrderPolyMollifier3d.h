@@ -117,6 +117,9 @@ class HighOrderPolyMollifier3d
 	{
 	return this->exponent-1;
 	}
+	
+	void setStrength(double strength) {this->strength = strength;}
+	double getStrength() const        {return this->strength;}
 
 	/// Evaluation operator 3D
 

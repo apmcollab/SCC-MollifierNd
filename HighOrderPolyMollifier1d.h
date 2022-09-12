@@ -83,6 +83,9 @@ class HighOrderPolyMollifier1d
 	void setRadius(double radius) {this->radius = radius;}
 	double getRadius()            {return this->radius;  }
 
+    void setStrength(double strength) {this->strength = strength;}
+	double getStrength() const        {return this->strength;}
+
 	void setOrder(int order)
 	{
 	this->order = order;

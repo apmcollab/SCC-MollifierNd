@@ -102,7 +102,9 @@ class SmoothPolyMollifier3d
 	return this->exponent-1;
 	}
 
-
+    void setStrength(double strength) {this->strength = strength;}
+	double getStrength() const        {return this->strength;}
+	
 	double operator()(double x, double y, double z) const
 	{
     double r2radius = ((x-xPos)*(x-xPos)  + (y-yPos)*(y-yPos) + (z-zPos)*(z-zPos))/(radius*radius);

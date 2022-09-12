@@ -98,6 +98,8 @@ class SmoothPolyMollifier2d
 	return this->exponent-1;
 	}
 
+    void setStrength(double strength) {this->strength = strength;}
+	double getStrength() const        {return this->strength;}
 
 	double operator()(double x, double y) const
 	{
