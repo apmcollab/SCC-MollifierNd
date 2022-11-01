@@ -138,8 +138,8 @@ class SmoothPolyStep
 	void setDifferentiability(int diffOrder)
 	{
 	this->exponent = diffOrder;
-	if(exponent > 10) this->exponent = 10;
-    if(exponent < 1 ) this->exponent = 1;
+	if(exponent > 10) {this->exponent = 10;}
+    if(exponent < 1 ) {this->exponent = 1;}
 	}
 
 	int getDifferentiablity() const
@@ -169,13 +169,13 @@ class SmoothPolyStep
 
     if(stepDownFlag)
     {
-    if(xDelta <= -1.0) return strength;
-    if(xDelta >=  1.0) return 0.0;
+    if(xDelta <= -1.0) {return strength;}
+    if(xDelta >=  1.0) {return 0.0;}
     return strength*(1.0-evaluate(xDelta));
     }
 
-    if(xDelta <= -1.0) return 0.0;
-    if(xDelta >=  1.0) return strength;
+    if(xDelta <= -1.0) {return 0.0;}
+    if(xDelta >=  1.0) {return strength;}
     return strength*evaluate(xDelta);
 	}
 
@@ -194,13 +194,13 @@ class SmoothPolyStep
 
     if(stepDownFlag)
     {
-    if(xDelta <= -1.0) return strength;
-    if(xDelta >=  1.0) return 0.0;
+    if(xDelta <= -1.0) {return strength;}
+    if(xDelta >=  1.0) {return 0.0;}
     return strength*(1.0-evaluate(xDelta));
     }
 
-	if(xDelta <= -1.0) return 0.0;
-    if(xDelta >=  1.0) return strength;
+	if(xDelta <= -1.0) {return 0.0;}
+    if(xDelta >=  1.0) {return strength;}
 	return strength*evaluate(xDelta);
 	}
 
