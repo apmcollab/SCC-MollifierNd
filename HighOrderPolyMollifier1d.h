@@ -136,6 +136,30 @@ class HighOrderPolyMollifier1d
 	return F;
 	}
 
+	double derivative(double x) const
+   	{
+   	double xRadius  = (x-xPos)/radius;
+    double r2radius = xRadius*xRadius;
+
+    if(r2radius >= 1.0) {return 0.0;}
+
+    switch(order)
+    {
+    case 2 : return (strength/radius)*DuEvaluation1D_2ndOrder(r2radius)*(-2.0*(xRadius/radius));;
+    case 4 : return (strength/radius)*DuEvaluation1D_4thOrder(r2radius)*(-2.0*(xRadius/radius));
+    case 6 : return (strength/radius)*DuEvaluation1D_6thOrder(r2radius)*(-2.0*(xRadius/radius));
+    }
+    return 0.0;
+    }
+    
+    //  Returns a std::function that is bound to the derivative operator of *this
+
+
+	std::function<double(double)> getDerivativeEvaluationPtr() const
+	{
+	std::function<double(double)> F = [this](double x) {return this->derivative(x);};
+	return F;
+	}
 
 
     //
@@ -163,6 +187,26 @@ class HighOrderPolyMollifier1d
     return 0.0;
     }
 
+
+    double DuEvaluation1D_2ndOrder(double r2) const
+    {
+    double u = 1.0-r2;
+    switch(this->exponent-1)
+    {
+	case  0 : return      (3.0/4.0); break;
+    case  1 : return 2.0*(15.0/16.0)*u; break;
+    case  2 : return 3.0*(35.0/32.0)*u*u; break;
+    case  3 : return 4.0*(315.0/256.0)*u*u*u; break;
+    case  4 : return 5.0*(693.0/512.0)*u*u*u*u; break;
+    case  5 : return 6.0*(3003.0/2048.0)*u*u*u*u*u; break;
+    case  6 : return 7.0*(6435.0/4096.0)*u*u*u*u*u*u; break;
+    case  7 : return 8.0*(109395.0/65536.0)*u*u*u*u*u*u*u; break;
+    case  8 : return 9.0*(230945.0/131072.0)*u*u*u*u*u*u*u*u; break;
+    case  9 : return 10.0*(969969.0/524288.0)*u*u*u*u*u*u*u*u*u; break;
+    }
+    return 0.0;
+    }
+
     double evaluation1D_4thOrder(double r2) const
     {
     double u = 1.0-r2;
@@ -177,10 +221,31 @@ class HighOrderPolyMollifier1d
     case  6 : return (-109395.0/8192.0)*(1.0-19.0/16.0*u)*u*u*u*u*u*u*u; break;
     case  7 : return (-2078505.0/131072.0)*(1.0-7.0/6.0*u)*u*u*u*u*u*u*u*u; break;
     case  8 : return (-4849845.0/262144.0)*(1.0-23.0/20.0*u)*u*u*u*u*u*u*u*u*u; break;
-    case  9 : return (-22309287.0/1048576.0)* (1.0-25.0/22.0*u)*u*u*u*u*u*u*u*u*u*u; break;
+    case  9 : return (-22309287.0/1048576.0)*(1.0-25.0/22.0*u)*u*u*u*u*u*u*u*u*u*u; break;
     }
     return 0.0;
     }
+
+
+    double DuEvaluation1D_4thOrder(double r2) const
+    {
+    double u = 1.0-r2;
+    switch(this->exponent-1)
+    {
+	case  0 : return (-15.0/8.0)              + (105.0/16.0)*u; break;
+    case  1 : return ((-105.0/16.0)           + (945.0/64.0)*u)*u; break;
+    case  2 : return ((-945.0/64.0)           + (3465.0/128.0)*u)*u*u; break;
+    case  3 : return ((-3465.0/128.0)         + (45045.0/1024.0)*u)*u*u*u; break;
+    case  4 : return ((-45045.0/1024.0)       + (135135.0/2048.0)*u)*u*u*u*u; break;
+    case  5 : return ((-135135.0/2048.0)      + (765765.0/8192.0)*u)*u*u*u*u*u; break;
+    case  6 : return ((-765765.0/8192.0)      + (2078505.0/16384.0)*u)*u*u*u*u*u*u; break;
+    case  7 : return ((-2078505.0/16384.0)    + (43648605.0/262144.0)*u)*u*u*u*u*u*u*u; break;
+    case  8 : return ((-43648605.0/262144.0)  + (111546435.0/524288.0)*u)*u*u*u*u*u*u*u*u; break;
+    case  9 : return ((-111546435.0/524288.0) + (557732175.0/2097152.0)*u)*u*u*u*u*u*u*u*u*u; break;
+    }
+    return 0.0;
+    }
+
 
     double evaluation1D_6thOrder(double r2) const
     {
@@ -200,6 +265,31 @@ class HighOrderPolyMollifier1d
     }
     return 0.0;
     }
+
+
+
+
+    double DuEvaluation1D_6thOrder(double r2) const
+    {
+    double u = 1.0-r2;
+    switch(this->exponent-1)
+    {
+	case  0 : return (105.0/32.0)              -(945.0/32.0)*u              + (10395.0/256.0)*u*u; break;
+    case  1 : return ((945.0/64.0)             -(10395.0/128.0)*u           + (45045.0/512.0)*u*u)*u; break;
+    case  2 : return ((10395.0/256.0)          -(45045.0/256.0)*u           + (675675.0/4096.0)*u*u)*u*u;break;
+    case  3 : return ((45045.0/512.0)          -(675675.0/2048.0)*u         + (2297295.0/8192.0)*u*u)*u*u*u; break;
+    case  4 : return ((675675.0/4096.0)        -(2297295.0/4096.0)*u        + (14549535.0/32768.0)*u*u)*u*u*u*u; break;
+    case  5 : return ((2297295.0/8192.0)       -(14549535.0/16384.0)*u      + (43648605.0/65536.0)*u*u)*u*u*u*u*u; break;
+    case  6 : return ((14549535.0/32768.0)     -(43648605.0/32768.0)*u      + (1003917915.0/1048576.0)*u*u)*u*u*u*u*u*u;break;
+    case  7 : return ((43648605.0/65536.0)     -(1003917915.0/524288.0)*u   + (2788660875.0/2097152.0)*u*u)*u*u*u*u*u*u*u;break;
+    case  8 : return ((1003917915.0/1048576.0) -(2788660875.0/1048576.0)*u  + (15058768725.0/8388608.0)*u*u)*u*u*u*u*u*u*u*u;break;
+    case  9 : return ((2788660875.0/2097152.0) -(15058768725.0/4194304.0)*u + (39700390275.0/16777216.0)*u*u)*u*u*u*u*u*u*u*u*u; break;
+    }
+    return 0.0;
+    }
+
+
+
 
     double        xPos;    // The position of the mollifier
     double      radius;    // The radius of the mollifier
