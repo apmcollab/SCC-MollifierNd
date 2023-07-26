@@ -70,6 +70,15 @@ class HighOrderPolyMollifier1d
     exponent  = DEFAULT_DIFFERENTIABLITY + 1;
 	}
 
+	void initialize(const HighOrderPolyMollifier1d& S)
+	{
+    strength   = S.strength;
+    xPos       = S.xPos;
+    radius     = S.radius;
+    order      = S.order;
+    exponent   = S.exponent;
+	}
+
 	void initialize(double xPos, double radius, double strength)
 	{
     this->strength  = strength;
