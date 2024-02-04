@@ -140,6 +140,8 @@ void initialize()
     polyFactor.initialize();
     DpolyFactor.initialize();
 	verboseFlag = false;
+
+	gaussLegendreTable.initialize();
 }
 
 void initialize(const NonSymmetricPolyMollifier1d& M)
@@ -167,6 +169,7 @@ void initialize(const NonSymmetricPolyMollifier1d& M)
     polyFactor.initialize(M.polyFactor);
     verboseFlag = M.verboseFlag;
 
+    gaussLegendreTable.initialize();
 }
 
 
